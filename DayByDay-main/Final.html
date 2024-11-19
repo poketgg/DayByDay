@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App with PyScript</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2 id="title">Weather App</h2>
+        <div class="texts">
+            <input type="text" id="city" placeholder="Search">
+            <button id="weather_button" class="button">Search</button><br><br><br>
+        </div>
+        <h3 id="weather_result">Search</h3><br>
+        <h3 id="weather_result2"></h3>
+    </div>
+
+<py-script>
+    from pyodide.http import pyfetch
+    from js import document
+    from pyodide.ffi import create_proxy
+    import asyncio
+
+    async def get_weather(city):
+        api_key = "942dd98dc0208f33a49c831c13548e6d"
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric&lang=kr"
+
+        try:
+            response = await pyfetch(url, method="GET")
+            if response.ok:
+                data = await response.json()
+                temp = data["main"]["temp"]
+
+                if temp <= 25 and temp >= 11:
+                    result2 = "날씨가 매우 좋습니다."
+                elif temp <= 10 and temp >= 6:
+                    result2 = "날씨가 약간 춥습니다."
+                elif temp <= 5 and temp >= -1:
+                    result2 = "날씨가 춥습니다 외투를 챙기세요."
+                elif temp <= -2:
+                    result2 = "날씨가 매우 춥습니다 두껍게 입고 다니세요."
+                else:
+                    result2 = "날씨가 매우 덥습니다."
+                    
+                description = data["weather"][0]["description"]
+                city_name = data["name"]
+                return f"{temp}°C", result2
+            elif response.status == 404:
+                return "Invalid City", ""
+            else:
+                return "날씨 정보를 가져올 수 없습니다. 다시 시도하세요."
+        except Exception as e:
+            return f"error: {str(e)}", ""
+
+    async def fetch_weather(event):
+        city = document.getElementById("city").value.strip()
+        if city:
+            result, result2 = await get_weather(city)
+            document.getElementById("weather_result").innerText = result
+            document.getElementById("weather_result2").innerText = result2
+        else:
+            document.getElementById("weather_result").innerText = "도시 이름을 입력하세요."
+            document.getElementById("weather_result2").innerText = ""
+
+    proxy = create_proxy(fetch_weather)
+    document.getElementById("weather_button").addEventListener("click", proxy)
+</py-script>
+
+</body>
+</html>
