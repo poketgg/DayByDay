@@ -1,0 +1,85 @@
+body{
+    background-image: url("360_F_579861052_KjeAAbyaXOBY6JjxMEPBVJypp2KSb59v.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    background-color: rgb(203, 198, 198);
+    border-radius: 25px;
+    position: relative;
+    height: 18em;
+    width: 27em;
+    top: 9.6em;
+}
+
+#title{
+    position: relative;
+    top: -10px;
+    left: 2.8em;
+    font-size: 37px;
+    font-family: 'Lexend', sans-serif;
+}
+
+.texts{
+    position: relative;
+    top: -15px;
+    left: 6.02em;
+    font-family: 'Lexend', sans-serif;
+}
+
+#city{
+    font-size: 22px;
+    font-family: 'Lexend', sans-serif;
+    color: #333333;
+    border: none;
+    width: 7.4em;
+    height: 35px;
+    border-radius: 7px;
+}
+
+#city::placeholder{
+    font-size: 16.9px;
+    position: relative;
+    left: 5px;
+    top: -1.5px;
+}
+
+.button{
+    font-size: 17px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    margin-left: 2px;
+    height: 2.2em;
+    width: 4em;
+    background-color: antiquewhite;
+    transition: 0.5s;
+    position: inherit;
+    top: -1px;
+}
+
+.button:hover{
+    background-color: white;
+}
+
+#weather_result{
+    font-family: 'Lexend', sans-serif;
+    font-size: 26px;
+    position: relative;
+    text-align: center;
+    bottom: 2em;
+}
+
+#weather_result2{
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+    position: relative;
+    bottom: 3.8em;
+}
