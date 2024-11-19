@@ -1,0 +1,89 @@
+body{
+    background-image: url(../src/img/360_F_579861052_KjeAAbyaXOBY6JjxMEPBVJypp2KSb59v.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main{
+    background-color: rgb(201, 196, 196);
+    position: relative;
+    width: 31em;
+    height: 30em;
+    border-radius: 20px;
+    top: 8.3em;
+}
+.s_b{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    border-radius: 29px;
+    background: #f6f6f6;
+    position: relative;
+    top: 23px;
+    left: 8.7em;
+    transition: background 0.25s;
+}
+
+.s_b:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75)
+}
+
+#input{
+    font-size: 18px;
+    font-family: 'Lexend', sans-serif;
+    color: #333333;
+    outline: none;
+    border: none;
+    background: transparent;
+    margin-left: 10px;
+    flex: 1;
+    width: 160px;
+}
+
+#input::placeholder,
+.search-icon{
+    color: #333333;
+}
+
+.texts{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.texts img{
+    position: relative;
+    width: 55%;
+    right: -1.5px;
+}
+
+.texts .temp{
+    position: relative;
+    font-size: 4em;
+    bottom: 1.52em;
+    font-family: 'Lexend', sans-serif;
+    right: 4.5px;
+}
+
+.texts span{
+    position: absolute;
+    font-size: 25px;
+    margin-left: -2px;
+}
+
+.texts .wea{
+    position: relative;
+    bottom: 9.2rem;
+    font-size: 36px;
+    right: 2px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
